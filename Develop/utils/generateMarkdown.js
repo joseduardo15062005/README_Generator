@@ -10,10 +10,23 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
+//TODO: renden the table of Content
+function renderTableOfContent(data) {
+  let temp = "## Table of Contents\n";
+  if (data.installation) temp += `* [Installation](#installation)\n`;
+  if (data.usage) temp += `* [Usage](#usage)\n`;
+  if (data.contributing) temp += `* [Credits](#credits)\n`;
+  if (data.license) temp += `* [License](#license)\n`;
+
+  return temp;
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
-
+## Description\n
+${data.description}\n
+${renderTableOfContent(data)}
 `;
 }
 
