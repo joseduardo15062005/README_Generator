@@ -1,8 +1,14 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+// Create a function that returns a license badge based on which license is passed in
+function renderLicenseBadge(license) {
+  if (license === "") {
+    return "";
+  }
+  return `
+   [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/${license}.en.html)
+  `;
+}
 
-// TODO: Create a function that returns the license link
+//Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   return `(https://choosealicense.com/licenses/${license}/)`;
@@ -14,8 +20,8 @@ function renderLicenseSection(license) {
   if (license === "") {
     return "";
   }
-
   let licenseName = "";
+
   if (license === "agpl-3.0") licenseName = "GNU AGPLv3";
   if (license === "gpl-3.0") licenseName = "GNU GPLv3";
   if (license === "lgpl-3.0") licenseName = "GNU LGPLv3";
@@ -27,8 +33,7 @@ function renderLicenseSection(license) {
 
   return `
 ## License\n
-Code released under the ${licenseName} [License]${renderLicenseLink(license)}
-`;
+Code released under the ${licenseName} [License]${renderLicenseLink(license)}`;
 }
 
 //Render section
@@ -53,8 +58,11 @@ function renderTableOfContent(data) {
 }
 
 // TODO: Create a function to generate markdown for README
+
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return `
+${renderLicenseBadge(data.license)}\n
+# ${data.title}
 ## Description\n
 ${data.description}\n
 ${renderTableOfContent(data)}
