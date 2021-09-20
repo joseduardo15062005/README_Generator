@@ -4,13 +4,34 @@ function renderLicenseBadge(license) {}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  return `(https://choosealicense.com/licenses/${license}/)`;
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  if (license === "") {
+    return "";
+  }
 
-//TODO: Render section
+  let licenseName = "";
+  if (license === "agpl-3.0") licenseName = "GNU AGPLv3";
+  if (license === "gpl-3.0") licenseName = "GNU GPLv3";
+  if (license === "lgpl-3.0") licenseName = "GNU LGPLv3";
+  if (license === "mpl-2.0") licenseName = "Mozilla Public License 2.0";
+  if (license === "apache-2.0") licenseName = "Apache License 2.0";
+  if (license === "mit") licenseName = "MIT License";
+  if (license === "bsl-1.0") licenseName = "Boost Software License 1.0";
+  if (license === "unlicense") licenseName = "The Unlicense";
+
+  return `
+## License\n
+Code released under the ${licenseName} [License]${renderLicenseLink(license)}
+`;
+}
+
+//Render section
 function renderSection(sectionTitle, data) {
   return `
 ## ${sectionTitle}\n
@@ -46,6 +67,7 @@ ${
 }\n
 ${data.tests ? `${renderSection("Tests", data.tests)}` : ""}\n
 ${data.questions ? `${renderSection("Questions", data.questions)}` : ""}\n
+${renderLicenseSection(data.license)}
 `;
 }
 

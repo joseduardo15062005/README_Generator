@@ -46,20 +46,23 @@ const questions = [
     name: "license",
     message: "Select a license for your project?",
     choices: [
-      { title: "MIT", value: "mit" },
-      { title: "GNU", value: "gnu" },
-      { title: "Apache v2", value: "apache" },
+      { title: "GNU AGPLv3", value: "agpl-3.0" },
+      { title: "GNU GPLv3", value: "gpl-3.0" },
+      { title: "GNU LGPLv3", value: "lgpl-3.0" },
+      { title: "Mozilla Public License 2.0", value: "mpl-2.0" },
+      { title: "Apache License 2.0", value: "apache-2.0" },
+      { title: "MIT License", value: "mit" },
+      { title: "Boost Software License 1.0", value: "bsl-1.0" },
+      { title: "The Unlicense", value: "unlicense" },
     ],
-    initial: 1,
+    initial: 6,
   },
 ];
-// TODO: Create a function to write README file
+//Create a function to write README file
 function writeToFile(fileName, data) {
   fs.writeFile(fileName, data, (err) => {
     if (err) throw err;
-    console.log(
-      `file README for your project ${data.title} was generated succesfully.`
-    );
+    console.log(`file README was generated succesfully.`);
   });
 }
 
