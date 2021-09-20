@@ -28,19 +28,19 @@ const questions = {
       require: true,
     },
     usage: {
-      description: "describe your project usage?",
+      description: "Describe your project usage?",
       pattern: /^[a-zA-Z\s\-]+$/,
       message: "Content must be only letters, spaces, or dashes",
       require: true,
     },
     license: {
-      description: "describe your project License?",
+      description: "Describe your project License?",
       pattern: /^[a-zA-Z\s\-]+$/,
       message: "Content must be only letters, spaces, or dashes",
       require: true,
     },
     contributing: {
-      description: "describe your project Contributiong?",
+      description: "Describe your project Contributing?",
       pattern: /^[a-zA-Z\s\-]+$/,
       message: "Content must be only letters, spaces, or dashes",
       require: true,
@@ -66,7 +66,7 @@ function writeToFile(fileName, data) {}
 // TODO: Create a function to initialize app
 function init() {
   let fileContent = "";
-  //TODO:Ask for the Project Title
+  //Ask for the Project Title
   prompt.get(questions, function (err, result) {
     console.log("============Results======================");
     console.log(result);

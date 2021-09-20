@@ -10,12 +10,22 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
-//TODO: renden the table of Content
+//TODO: Render section
+function renderSection(sectionTitle, data) {
+  return `
+## ${sectionTitle}\n
+${data}
+  `;
+}
+
+//renden the table of Content
 function renderTableOfContent(data) {
   let temp = "## Table of Contents\n";
   if (data.installation) temp += `* [Installation](#installation)\n`;
   if (data.usage) temp += `* [Usage](#usage)\n`;
   if (data.contributing) temp += `* [Credits](#credits)\n`;
+  if (data.tests) temp += `* [Tests](#tests)\n`;
+  if (data.questions) temp += `* [Questions](#questions)\n`;
   if (data.license) temp += `* [License](#license)\n`;
 
   return temp;
@@ -27,6 +37,15 @@ function generateMarkdown(data) {
 ## Description\n
 ${data.description}\n
 ${renderTableOfContent(data)}
+${
+  data.installation ? `${renderSection("Installation", data.installation)}` : ""
+}\n
+${data.usage ? `${renderSection("Usage", data.usage)}` : ""}\n
+${
+  data.contributing ? `${renderSection("Contributing", data.contributing)}` : ""
+}\n
+${data.tests ? `${renderSection("Tests", data.tests)}` : ""}\n
+${data.questions ? `${renderSection("Questions", data.questions)}` : ""}\n
 `;
 }
 
